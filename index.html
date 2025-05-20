@@ -1,0 +1,179 @@
+<!doctype html>
+<html class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>itskiel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @font-face {
+            font-family: '04B';
+            src: url('public/fonts/04B_30__.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'montserrat';
+            src: url('public/fonts/montserrat.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @theme inline {
+            --font-cute: '04B';
+            --font-roboto: 'Roboto';
+            --font-montserrat: 'montserrat';
+
+            /* colors */
+            --color-blue: #6C9CDE;
+            --color-secondary-blue: #99C8F2;
+            --color-saweria: #FAAE2B;
+        }
+    </style>
+</head>
+
+<body class="bg-secondary-blue">
+
+    <header id="navbar" class="w-full h-16 backdrop-blur-xs bg-secondary-blue/20 sticky top-0 left-0 z-50">
+        <nav class="flex w-full justify-center items-center h-full">
+            <ul
+                class="w-full h-full flex justify-center items-center gap-x-8 md:gap-x-28 font-arial font-montserrat font-semibold text-xs sm:text-sm text-nowrap">
+                <li>
+                    <a href="#profile"
+                        class="md:hover:bg-blue transition ease-out duration-200 text-sky-900 hover:text-white rounded-full md:px-6 md:py-3">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#profile"
+                        class="md:hover:bg-blue transition ease-out duration-200 text-sky-900 hover:text-white rounded-full md:px-6 md:py-3">
+                        <i class="fas fa-calendar-alt"></i>
+                        Stream schedule
+                    </a>
+                </li>
+                <li>
+                    <a href="#profile"
+                        class="md:hover:bg-blue transition ease-out duration-200 text-sky-900 hover:text-white rounded-full md:px-6 md:py-3">
+                        <i class="fas fa-photo-video"></i>
+                        Gallery
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section
+            class="flex flex-col md:flex-row justify-center items-center md:items-start gap-5 md:gap-10 min-h-screen py-11 w-full bg-[url('/public/images/background.png')] bg-cover md:bg-[auto_100vw] bg-no-repeat bg-bottom relative">
+            <img draggable="false"
+                src="https://cdn.prod.website-files.com/62a0a0168756b795debc65bc/66bc2e75bf62c2412cafc01d_bublz.gif"
+                alt="" class="w-full h-full absolute top-0 left-0 mix-blend-screen">
+
+            <div class="relative z-20 flex flex-col items-center">
+                <img draggable="false" src="/public/images/kiel.gif" alt="" class="w-80 hover:scale-105 transition">
+                <!-- <img draggable="false" src="/public/images/Kiel.png" alt="" class="w-40"> -->
+
+                <h3 class="font-montserrat text-sky-900 font-bold text-lg text-center mt-2">Follow Me!</h3>
+                <div class="flex justify-center items-center gap-x-5 mt-2">
+                    <a href="https://x.com/Kielskuy_QL" target="_blank">
+                        <div class="hover:scale-110 transition ease-in-out">
+                            <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M31.3075 3.25256H37.0705L24.48 17.6427L39.2917 37.2244H27.6942L18.6107 25.3482L8.21703 37.2244H2.45053L15.9173 21.8326L1.70837 3.25256H13.6003L21.811 14.1079L31.3075 3.25256ZM29.2848 33.775H32.4782L11.8651 6.52083H8.43829L29.2848 33.775Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="https://www.youtube.com/@Kielskuy-12" target="_blank">
+                        <div class="hover:scale-110 transition ease-in-out">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_48_211)">
+                                    <path
+                                        d="M47.044 12.3709C46.7726 11.3498 46.2378 10.4178 45.493 9.66825C44.7483 8.91872 43.8197 8.37794 42.8003 8.10003C39.0476 7.09094 24.0476 7.09094 24.0476 7.09094C24.0476 7.09094 9.04761 7.09094 5.29488 8.10003C4.27547 8.37794 3.34693 8.91872 2.60218 9.66825C1.85744 10.4178 1.32262 11.3498 1.05124 12.3709C0.0476075 16.14 0.0476074 24 0.0476074 24C0.0476074 24 0.0476075 31.86 1.05124 35.6291C1.32262 36.6503 1.85744 37.5823 2.60218 38.3318C3.34693 39.0813 4.27547 39.6221 5.29488 39.9C9.04761 40.9091 24.0476 40.9091 24.0476 40.9091C24.0476 40.9091 39.0476 40.9091 42.8003 39.9C43.8197 39.6221 44.7483 39.0813 45.493 38.3318C46.2378 37.5823 46.7726 36.6503 47.044 35.6291C48.0476 31.86 48.0476 24 48.0476 24C48.0476 24 48.0476 16.14 47.044 12.3709Z"
+                                        fill="#FF0302" />
+                                    <path d="M19.1387 31.1373V16.8628L31.6841 24.0001L19.1387 31.1373Z"
+                                        fill="#FEFEFE" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_48_211">
+                                        <rect width="48" height="48" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="https://discord.com/invite/38zQPbtM" target="_blank">
+                        <div class="hover:scale-110 transition ease-in-out">
+                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M37.2479 7.61859C34.4434 6.33181 31.4361 5.38376 28.2918 4.84078C28.2346 4.8303 28.1774 4.85649 28.1479 4.90887C27.7611 5.59676 27.3327 6.49418 27.0327 7.19954C23.6507 6.69323 20.2862 6.69323 16.9736 7.19954C16.6735 6.4785 16.2296 5.59676 15.8411 4.90887C15.8116 4.85824 15.7544 4.83205 15.6971 4.84078C12.5545 5.38203 9.54719 6.33007 6.74105 7.61859C6.71675 7.62907 6.69593 7.64654 6.68211 7.66922C0.977885 16.1912 -0.584742 24.5037 0.18183 32.7132C0.185299 32.7534 0.207845 32.7918 0.239063 32.8162C4.00255 35.58 7.64813 37.2579 11.226 38.3701C11.2833 38.3876 11.3439 38.3666 11.3804 38.3194C12.2267 37.1637 12.9812 35.945 13.628 34.6634C13.6662 34.5884 13.6298 34.4993 13.5518 34.4696C12.3551 34.0157 11.2156 33.4622 10.1195 32.8337C10.0328 32.7831 10.0259 32.6591 10.1056 32.5997C10.3363 32.4268 10.567 32.247 10.7873 32.0654C10.8271 32.0323 10.8826 32.0253 10.9295 32.0462C18.1304 35.3339 25.9262 35.3339 33.0421 32.0462C33.0889 32.0235 33.1445 32.0305 33.186 32.0637C33.4064 32.2453 33.637 32.4268 33.8694 32.5997C33.9492 32.6591 33.944 32.7831 33.8573 32.8337C32.7612 33.4744 31.6217 34.0157 30.4233 34.4679C30.3452 34.4976 30.3105 34.5884 30.3487 34.6634C31.0095 35.9432 31.7639 37.1619 32.5946 38.3177C32.6293 38.3666 32.6918 38.3876 32.749 38.3701C36.3442 37.2579 39.9898 35.58 43.7533 32.8162C43.7863 32.7918 43.8071 32.7551 43.8106 32.715C44.728 23.2239 42.2739 14.9795 37.3051 7.67096C37.2929 7.64654 37.2722 7.62907 37.2479 7.61859ZM14.7034 27.7145C12.5354 27.7145 10.7491 25.7242 10.7491 23.2798C10.7491 20.8354 12.5008 18.8451 14.7034 18.8451C16.9233 18.8451 18.6923 20.8529 18.6576 23.2798C18.6576 25.7242 16.9059 27.7145 14.7034 27.7145ZM29.3237 27.7145C27.1558 27.7145 25.3695 25.7242 25.3695 23.2798C25.3695 20.8354 27.1211 18.8451 29.3237 18.8451C31.5437 18.8451 33.3126 20.8529 33.278 23.2798C33.278 25.7242 31.5437 27.7145 29.3237 27.7145Z"
+                                    fill="#5865F2" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="flex flex-col justify-center items-center m-4">
+                    <a href="https://saweria.co/QLkiel" target="_blank">
+                        <button
+                            class="h-11 w-44 rounded-md border-[1.28px] border-black bg-saweria flex justify-center items-center text-black font-mono gap-x-1.5 hover:bg-white transition relative hover:scale-110 ease-in-out">
+                            <img src="/public/images/saweria-icon.png" alt="saweria" class="w-8 absolute left-6">
+                            <span class="block tracking-wide translate-x-3">
+                                Donate
+                            </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative z-20 text-center flex flex-col items-center md:items-start md:text-start">
+                <h1 class="text-4xl font-cute text-blue">
+                    kiel skuy
+                </h1>
+                <div class="text-start w-fit flex gap-x-5 mt-6">
+                    <div class="font-montserrat text-sm space-y-4 text-sky-900 font-bold">
+                        <p>Birthday</p>
+                        <p>Height</p>
+                        <p>Debut</p>
+                        <p>Hobby</p>
+                    </div>
+                    <div
+                        class="font-montserrat text-sm text-right md:text-left space-y-4 text-black font-bold max-w-44">
+                        <p>34 Juli 1881</p>
+                        <p>170 cm</p>
+                        <p>07 Mei 2025</p>
+                        <p>Gaming, Music, Yapping</p>
+                    </div>
+                </div>
+
+                <div class="max-w-[20rem] mt-11 space-y-2">
+                    <h2 class="text-sky-900 font-montserrat text-lg font-black">About Me</h2>
+                    <p class="font-montserrat text-pretty text-sky-900 leading-tight text-sm">
+                        Hi ... My Name Is Kie!!! Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque
+                        faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis
+                        convallis
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="h-screen w-full bg-secondary-blue flex justify-center items-center">
+            Reserved for schedule
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

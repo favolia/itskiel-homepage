@@ -12,14 +12,14 @@
     <style type="text/tailwindcss">
         @font-face {
             font-family: '04B';
-            src: url('public/fonts/04B_30__.TTF') format('truetype');
+            src: url('assets/fonts/04B_30__.TTF') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'montserrat';
-            src: url('public/fonts/montserrat.ttf') format('truetype');
+            src: url('assets/fonts/montserrat.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -33,13 +33,37 @@
             --color-blue: #6C9CDE;
             --color-secondary-blue: #99C8F2;
             --color-saweria: #FAAE2B;
+            --color-loading-background: #B8D9F6;
         }
     </style>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body class="bg-secondary-blue">
+<body class="bg-secondary-blue relative overflow-hidden" id="profile">
+    <div id="loading-screen"
+        class="w-full h-screen fixed top-0 left-0 flex justify-center items-center z-50 bg-loading-background transition-all ease-in-out duration-500 select-none">
+        <div class="loading-screen">
 
-    <header id="navbar" class="w-full h-16 backdrop-blur-xs bg-secondary-blue/20 sticky top-0 left-0 z-50">
+            <div class="character-wrapper">
+                <img id="kiel-loading" draggable="false" src="assets/images/kiel.gif" alt="Knight Character"
+                    class="character">
+                <img draggable="false" src="assets/images/speech-bubble.gif" alt="Speech Bubble" class="speech-bubble">
+            </div>
+
+            <div class="loading-text" id="loading-text">
+                <span id="loading-sub-text">L</span><span id="loading-sub-text">O</span><span
+                    id="loading-sub-text">A</span><span id="loading-sub-text">D</span><span
+                    id="loading-sub-text">I</span><span id="loading-sub-text">N</span><span
+                    id="loading-sub-text">G</span>
+                <span id="loading-sub-text" class="dots">.</span><span id="loading-sub-text" class="dots">.</span><span
+                    id="loading-sub-text" class="dots">.</span>
+            </div>
+
+        </div>
+    </div>
+
+    <header id="navbar" class="w-full h-[3.5rem] backdrop-blur-xs bg-secondary-blue/20 sticky top-0 left-0 z-40">
         <nav class="flex w-full justify-center items-center h-full">
             <ul
                 class="w-full h-full flex justify-center items-center gap-x-8 md:gap-x-28 font-arial font-montserrat font-semibold text-xs sm:text-sm text-nowrap">
@@ -51,14 +75,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#profile"
+                    <a href="#schedule"
                         class="md:hover:bg-blue transition ease-out duration-200 text-sky-900 hover:text-white rounded-full md:px-6 md:py-3">
                         <i class="fas fa-calendar-alt"></i>
                         Stream schedule
                     </a>
                 </li>
                 <li>
-                    <a href="#profile"
+                    <a href="#gallery"
                         class="md:hover:bg-blue transition ease-out duration-200 text-sky-900 hover:text-white rounded-full md:px-6 md:py-3">
                         <i class="fas fa-photo-video"></i>
                         Gallery
@@ -70,14 +94,14 @@
 
     <main>
         <section
-            class="flex flex-col md:flex-row justify-center items-center md:items-start gap-5 md:gap-10 min-h-screen py-11 w-full bg-[url('/public/images/background.png')] bg-cover md:bg-[auto_100vw] bg-no-repeat bg-bottom relative">
+            class="flex flex-col md:flex-row justify-center items-center md:items-start gap-5 md:gap-10 min-h-screen py-11 w-full bg-[url('/assets/images/background.png')] bg-cover md:bg-[auto_100vw] bg-no-repeat bg-bottom relative">
             <img draggable="false"
                 src="https://cdn.prod.website-files.com/62a0a0168756b795debc65bc/66bc2e75bf62c2412cafc01d_bublz.gif"
                 alt="" class="w-full h-full absolute top-0 left-0 mix-blend-screen">
 
             <div class="relative z-20 flex flex-col items-center">
-                <img draggable="false" src="/public/images/kiel.gif" alt="" class="w-80 hover:scale-105 transition">
-                <!-- <img draggable="false" src="/public/images/Kiel.png" alt="" class="w-40"> -->
+                <img id="kiel-main" draggable="false" src="/assets/images/kiel.gif" alt=""
+                    class="w-80 hover:scale-105 transition">
 
                 <h3 class="font-montserrat text-sky-900 font-bold text-lg text-center mt-2">Follow Me!</h3>
                 <div class="flex justify-center items-center gap-x-5 mt-2">
@@ -127,7 +151,7 @@
                     <a href="https://saweria.co/QLkiel" target="_blank">
                         <button
                             class="h-11 w-44 rounded-md border-[1.28px] border-black bg-saweria flex justify-center items-center text-black font-mono gap-x-1.5 hover:bg-white transition relative hover:scale-110 ease-in-out">
-                            <img src="/public/images/saweria-icon.png" alt="saweria" class="w-8 absolute left-6">
+                            <img src="/assets/images/saweria-icon.png" alt="saweria" class="w-8 absolute left-6">
                             <span class="block tracking-wide translate-x-3">
                                 Donate
                             </span>
@@ -168,12 +192,89 @@
 
         </section>
 
-        <section class="h-screen w-full bg-secondary-blue flex justify-center items-center">
-            Reserved for schedule
+        <section id="schedule" class="min-h-screen w-full bg-secondary-blue flex justify-center items-center py-20">
+            <div id="schedule-image">
+                <div
+                    class="bg-blue w-[55rem] h-[35rem] border border-black rounded-xl shadow-inner shadow-black/25 py-6 px-7 flex flex-col justify-center items-center gap-3">
+                    <div data-aos="zoom-out" class="flex justify-center items-center gap-x-3">
+                        <img src="/assets/icons/date.png" alt="" class="w-12">
+                        <h4 class="text-2xl font-cute text-white uppercase">
+                            Jadwal Streaming
+                        </h4>
+                    </div>
+                    <div
+                        class="w-full h-full rounded-xl bg-[url('/assets/images/background.png')] bg-no-repeat bg-cover bg-center shadow-inner shadow-black/30 relative overflow-hidden">
+                        <div class="w-full h-full flex justify-start items-center gap-x-2">
+                            <img data-aos="zoom-out" draggable="false" src="/assets/images/kiel-smart.png" alt=""
+                                class="w-72 hover:scale-105 transition -translate-y-8">
+                            <div class="relative z-10 scale-90">
+                                <div id="schedule-list" class="flex flex-col gap-y-1.5 overflow-hidden">
+                                </div>
+                                <div class="flex flex-col justify-between items-start">
+                                    <p data-aos="fade-left" class="text-xs text-blue font-bold self-end my-2">
+                                        *update setiap minggu
+                                    </p>
+                                    <a data-aos="fade-right" href="https://www.youtube.com/@Kielskuy-12"
+                                        target="_blank">
+                                        <button
+                                            class="group hover:bg-blue bg-white border border-black rounded-lg flex justify-between items-center w-72 px-2 py-0.5 cursor-pointer transition-all ease-in-out duration-200">
+                                            <img src="/assets/icons/youtube-icon.png" alt="" class="w-7">
+                                            <span
+                                                class="block text-blue underline font-bold text-xs group-hover:text-white">
+                                                youtube.com/@Kielskuy-12
+                                            </span>
+                                            <span></span>
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="absolute top-0 right-1/4">
+                                <img src="assets/images/birds.png" alt="" class="w-28">
+                            </div>
+
+                            <div class="absolute bottom-0 right-4">
+                                <!-- <a data-aos="flip-down" href="#"
+                                    class="text-blue font-bold text-[0.65rem] pointer-events-none">
+                                    ©Team 8FLC
+                                </a> -->
+                                <button id="download-button" data-aos="flip-down"
+                                    class="text-blue font-bold text-[0.65rem]">
+                                    ©Team 8FLC
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="h-screen w-full flex flex-col justify-center items-center bg-blue">
+            <div class="flex flex-col justify-center items-center">
+                <span class="text-5xl animate-pulse">
+                    📸✨
+                </span>
+                <p class="text-5xl font-cute text-white animate-pulse my-6 text-center">Gallery Masih Loading!</p>
+            </div>
+            <p class="font-cute text-white/85 text-sm max-w-xl text-center text-balance">
+                "Moe-moe engineer dari "Team 8FLC" lagi ngerakit halaman ini buat kamu
+                Tungguin yaa... Segera hadir foto-foto dan momen spesial Kiel di web ini!"
+            </p>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="bg-white w-full h-16 flex justify-center items-center">
+        <p class="uppercase text-blue font-cute text-xs">
+            © 2025 -- Kielskuy and Team 8FLC
+        </p>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

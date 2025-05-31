@@ -1,0 +1,153 @@
+/* =============================================
+   1. Reset & Base Styles
+   Membersihkan margin/padding default dan atur layout dasar
+   ============================================= */
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #B8D9F6;  
+  font-family: '04b', sans-serif;
+  color: white;
+} */
+
+/* =============================================
+   2. Font Custom
+   Mengimpor font pixel-style bernama '04b'
+   ============================================= */
+@font-face {
+    font-family: '04b';
+    src: url('public/fonts/04B_30__.TTF') format('truetype');
+}
+
+/* =============================================
+   3. Container Utama
+   Mengatur posisi dan tata letak elemen
+   ============================================= */
+.loading-screen {
+    text-align: center;
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =============================================
+   4. Animasi Karakter (Kiel)
+   Karakter melayang (float) seperti awan
+   ============================================= */
+.character-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.character {
+    width: 150px;
+    animation: floatCharacter 4s ease-in-out infinite;
+    z-index: 1;
+    position: relative;
+}
+
+.speech-bubble {
+    position: absolute;
+    top: -10px;
+    right: -75px;
+    width: 120px;
+    height: 50px;
+}
+
+@keyframes floatCharacter {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* =============================================
+   6. Teks "LOADING"
+   - Huruf tetap muncul semua, hanya satu yang di-highlight
+   - Titik (...) berkedip
+   ============================================= */
+
+.loading-text {
+    font-family: '04b', sans-serif;
+    font-size: 36px;
+    color: #ffffff;
+    white-space: nowrap;
+    margin-top: 5px;
+    position: relative;
+}
+
+/* Semua huruf selalu terlihat tapi samar */
+.loading-text span {
+    display: inline-block;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+/* Kelas untuk highlight satu huruf */
+.loading-text .highlight {
+    opacity: 1;
+}
+
+/* Titik loading (...) berkedip */
+.dots {
+    animation: blink 1s steps(5, start) infinite;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* =============================================
+   7. Efek Saat DONE!
+   - Membesar lalu mengecil dengan smooth
+   ============================================= */
+.loading-text.done {
+    animation: scaleUp 0.8s ease-out forwards, popOut 0.8s ease-in 0.8s forwards;
+    transform-origin: center;
+    opacity: 1;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1.5);
+        opacity: 1;
+    }
+}
+
+@keyframes popOut {
+    to {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}

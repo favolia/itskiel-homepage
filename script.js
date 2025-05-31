@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const el = `<div data-aos="fade-up" data-aos-delay="500" data-aos-duration="500"
                     data-aos-easing="ease-in-out" class="bg-blue/55 py-1 rounded-lg">
                     <div id="stream-box"
-                        class="bg-blue/60 shadow-inner shadow-black/30 w-[30rem] flex justify-between items-center rounded-lg font-cute text-xs text-white uppercase py-2 px-2">
+                        class="bg-blue/60 shadow-inner shadow-black/30 w-full sm:w-96 md:w-[30rem] flex justify-between items-center rounded-lg font-cute text-[0.50rem] sm:text-xs md:text-xs text-white uppercase py-2 px-2 text-center">
                         <span class="block" id="day">${item.hari}</span>
                         <span class="block" id="activity">${item.kegiatan}</span>
                         <span class="block" id="time">${item.waktu}</span>

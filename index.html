@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="scroll-smooth">
+<html class="scroll-smooth overflow-hidden">
 
 <head>
     <meta charset="UTF-8" />
@@ -61,27 +61,24 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
-<body class="bg-secondary-blue relative overflow-hidden" id="profile">
+<body class="bg-secondary-blue relative" id="profile">
     <div id="loading-screen"
-        class="w-full h-screen fixed top-0 left-0 flex justify-center items-center z-50 bg-loading-background transition-all ease-in-out duration-500 select-none">
-        <div class="loading-screen">
+        class="w-screen h-screen fixed top-0 left-0 flex flex-col justify-center items-center z-50 bg-loading-background transition-all ease-in-out duration-500 select-none">
 
-            <div class="character-wrapper">
-                <img id="kiel-loading" draggable="false" src="assets/images/kiel.gif" alt="Knight Character"
-                    class="character">
-                <img draggable="false" src="assets/images/speech-bubble.gif" alt="Speech Bubble" class="speech-bubble">
-            </div>
-
-            <div class="loading-text" id="loading-text">
-                <span id="loading-sub-text">L</span><span id="loading-sub-text">O</span><span
-                    id="loading-sub-text">A</span><span id="loading-sub-text">D</span><span
-                    id="loading-sub-text">I</span><span id="loading-sub-text">N</span><span
-                    id="loading-sub-text">G</span>
-                <span id="loading-sub-text" class="dots">.</span><span id="loading-sub-text" class="dots">.</span><span
-                    id="loading-sub-text" class="dots">.</span>
-            </div>
-
+        <div class="character-wrapper">
+            <img id="kiel-loading" draggable="false" src="assets/images/kiel.gif" alt="Knight Character"
+                class="character">
+            <img draggable="false" src="assets/images/speech-bubble.gif" alt="Speech Bubble" class="speech-bubble">
         </div>
+
+        <div class="loading-text" id="loading-text">
+            <span id="loading-sub-text">L</span><span id="loading-sub-text">O</span><span
+                id="loading-sub-text">A</span><span id="loading-sub-text">D</span><span
+                id="loading-sub-text">I</span><span id="loading-sub-text">N</span><span id="loading-sub-text">G</span>
+            <span id="loading-sub-text" class="dots">.</span><span id="loading-sub-text" class="dots">.</span><span
+                id="loading-sub-text" class="dots">.</span>
+        </div>
+
     </div>
 
     <header id="navbar" class="w-full h-[3.5rem] backdrop-blur-xs bg-secondary-blue/20 sticky top-0 left-0 z-40">

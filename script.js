@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadButton = $('#download-button');
     const scheduleContainer = $('#schedule-list');
 
-    const sheetUrl = 'https://script.google.com/macros/s/AKfycbwe1WcacsPWqhaGJKone_w4LIg-KySDTBOT_ySDZw5xK_PvRMuan2zdIi5HHyWywVga/exec';
+    const sheetUrl = 'https://script.google.com/macros/s/AKfycbyaUZNK08jkV1HSMCxY7P61m9qSePB3l2DHMMvp7jvmyxlVYMTXqu9JUiTp0JzulZko/exec';
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
     ScrollLocker.lock();
@@ -74,6 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }, 3000);
 
+    const box = document.getElementById("gallery-container");
+    const items = box.querySelectorAll("span");
+    const total = items.length;
+    const degStep = 360 / total;
+    const boxWidth = box.offsetWidth;
+
+    const radius = (boxWidth / 2) / Math.tan(Math.PI / total);
+    console.log(radius)
+    items.forEach((item, i) => {
+        item.style.transform = `rotateY(${degStep * i}deg) translateZ(${radius * 1.5}px)`;
+    });
+
     fetch(sheetUrl)
         .then((res) => res.json())
         .then((data) => {
@@ -84,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 vtuberDebutDate,
                 vtuberHobby,
                 vtuberAbout,
+                links,
                 schedule
             } = data;
 
@@ -93,6 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
             $('#vtuber-debut').textContent = vtuberDebutDate;
             $('#vtuber-hobby').textContent = vtuberHobby;
             $('#vtuber-about').textContent = vtuberAbout;
+
+            $('#vtuber-x').href = links.x;
+            $('#vtuber-yt').href = links.yt;
+            $('#vtuber-dc').href = links.discord;
+            $('#vtuber-saweria').href = links.saweria;
+
+            $('#trailer-yt').src = links.trailer;
 
             schedule.forEach((item) => {
                 const el = document.createElement('div');

@@ -123,7 +123,7 @@
 
                 <h3 class="font-montserrat text-sky-900 font-bold text-lg text-center mt-2">Follow Me!</h3>
                 <div class="flex justify-center items-center gap-x-5 mt-2">
-                    <a href="https://x.com/Kielskuy_QL" target="_blank">
+                    <a href="#" target="_blank" id="vtuber-x">
                         <div class="hover:scale-110 transition ease-in-out">
                             <svg width="41" height="41" viewBox="0 0 41 41" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +134,7 @@
                         </div>
                     </a>
 
-                    <a href="https://www.youtube.com/@Kielskuy-12" target="_blank">
+                    <a href="#" target="_blank" id="vtuber-yt">
                         <div class="hover:scale-110 transition ease-in-out">
                             <svg width="48" height="48" viewBox="0 0 48 48" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +154,7 @@
                         </div>
                     </a>
 
-                    <a href="https://discord.com/invite/38zQPbtM" target="_blank">
+                    <a href="#" target="_blank" id="vtuber-dc">
                         <div class="hover:scale-110 transition ease-in-out">
                             <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +166,7 @@
                     </a>
                 </div>
                 <div class="flex flex-col justify-center items-center m-4">
-                    <a href="https://saweria.co/QLkiel" target="_blank">
+                    <a href="#" target="_blank" id="vtuber-saweria">
                         <button
                             class="h-11 w-44 rounded-md border-[1.28px] border-black bg-saweria flex justify-center items-center text-black font-mono gap-x-1.5 hover:bg-white transition relative hover:scale-110 ease-in-out">
                             <img src="/assets/images/saweria-icon.png" alt="saweria" class="w-8 absolute left-6">
@@ -214,13 +214,18 @@
 
                         Selamat datang di dunianya Kiel. Silakan duduk, santai, dan nikmati waktu bersamaku.
                     </p>
+
+                    <div class="border rounded-lg overflow-hidden w-fit">
+                        <iframe src="" frameborder="0" id="trailer-yt"></iframe>
+                    </div>
                 </div>
             </div>
 
         </section>
 
         <section id="schedule"
-            class="md:min-h-screen w-full bg-secondary-blue flex justify-center items-center py-12 md:py-20">
+            class="md:min-h-screen w-full bg-secondary-blue. flex justify-center items-center py-12 md:py-20"
+            style="background: linear-gradient(135deg, #99C8F2, #CCE6FF, #FFFFFF)">
             <div id="schedule-image" class="w-full lg:w-fit px-2 sm:px-6">
                 <div
                     class="bg-blue w-full lg:w-[55rem] lg:h-[35rem] border border-black rounded-xl shadow-inner shadow-black/25 py-6 px-2 lg:px-7 flex flex-col justify-center items-center gap-3">
@@ -277,7 +282,8 @@
             </div>
         </section>
 
-        <section id="gallery" class="h-screen w-full flex flex-col justify-center items-center bg-blue">
+        <!-- <section id="gallery" class="h-screen w-full flex flex-col justify-center items-center bg-blue">
+
             <div class="flex flex-col justify-center items-center">
                 <span class="text-5xl animate-pulse">
                     📸✨
@@ -288,7 +294,25 @@
                 "Moe-moe engineer dari "Team 8FLC" lagi ngerakit halaman ini buat kamu
                 Tungguin yaa... Segera hadir foto-foto dan momen spesial Kiel di web ini!"
             </p>
+        </section> -->
+
+        <section id="gallery" class="gallery overflow-hidden">
+            <div class="gallery-title-wrapper">
+                <h4 class="gallery-title text-4xl">
+                    Gallery
+                </h4>
+            </div>
+            <div class="box scale-50 md:scale-[.65] lg:scale-75" id="gallery-container">
+                <span><img draggable="false" src="assets/images/gallery/kiel1.png" /></span>
+                <span><img draggable="false" src="assets/images/gallery/kiel2.png" /></span>
+                <span><img draggable="false" src="assets/images/gallery/kiel4.png" /></span>
+                <span><img draggable="false" src="assets/images/gallery/kiel5.png" /></span>
+                <span><img draggable="false" src="assets/images/gallery/kiel6.png" /></span>
+                <span><img draggable="false" src="assets/images/gallery/kiel7.png" /></span>
+                <span><img draggable="false" src="assets/images/gallery/kiel10.gif" /></span>
+            </div>
         </section>
+
     </main>
 
     <footer class="bg-white w-full h-16 flex justify-center items-center">

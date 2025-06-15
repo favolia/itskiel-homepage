@@ -2,11 +2,16 @@ const ScrollLocker = (() => {
     let scrollX = 0;
     let scrollY = 0;
 
-    function preventDefault(e) {
-        e.preventDefault();
-    }
+    const preventDefault = (e) => e.preventDefault();
 
-    function lockScroll() {
+    const freezeScroll = () => window.scrollTo(scrollX, scrollY);
+
+    const preventKeyScroll = (e) => {
+        const keysToBlock = [32, 33, 34, 35, 36, 37, 38, 39, 40];
+        if (keysToBlock.includes(e.keyCode)) e.preventDefault();
+    };
+
+    const lock = () => {
         scrollX = window.scrollX || window.pageXOffset;
         scrollY = window.scrollY || window.pageYOffset;
 
@@ -15,110 +20,109 @@ const ScrollLocker = (() => {
         window.addEventListener('wheel', preventDefault, { passive: false });
         window.addEventListener('touchmove', preventDefault, { passive: false });
         window.addEventListener('keydown', preventKeyScroll, false);
-    }
+    };
 
-    function unlockScroll() {
+    const unlock = () => {
         window.removeEventListener('scroll', freezeScroll);
         window.removeEventListener('wheel', preventDefault);
         window.removeEventListener('touchmove', preventDefault);
         window.removeEventListener('keydown', preventKeyScroll);
-    }
-
-    function freezeScroll() {
-        window.scrollTo(scrollX, scrollY);
-    }
-
-    function preventKeyScroll(e) {
-        const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40];
-        if (keys.includes(e.keyCode)) {
-            e.preventDefault();
-        }
-    }
-
-    return {
-        lock: lockScroll,
-        unlock: unlockScroll
     };
+
+    return { lock, unlock };
 })();
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    const $ = (selector) => document.querySelector(selector);
 
-    ScrollLocker.lock();
-
-    const loadingScreen = document.querySelector('#loading-screen')
-    const loadingText = document.querySelector('#loading-text')
+    const loadingScreen = $('#loading-screen');
+    const loadingText = $('#loading-text');
     const letters = loadingText.querySelectorAll('#loading-sub-text');
 
-    const scheduleImage = document.getElementById('schedule-image')
-    const downloadScheduleButton = document.getElementById('download-button')
-    const scheduleContainer = document.querySelector('#schedule-list')
+    const scheduleImage = $('#schedule-image');
+    const downloadButton = $('#download-button');
+    const scheduleContainer = $('#schedule-list');
 
-    function animateLetterHighlight() {
+    const sheetUrl = 'https://script.google.com/macros/s/AKfycbwe1WcacsPWqhaGJKone_w4LIg-KySDTBOT_ySDZw5xK_PvRMuan2zdIi5HHyWywVga/exec';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    ScrollLocker.lock();
+
+    const animateLoadingLetters = () => {
         let index = 0;
 
-        function highlightNextLetter() {
-            letters.forEach(letter => letter.classList.remove('highlight'));
-
+        const highlightNext = () => {
+            letters.forEach((letter) => letter.classList.remove('highlight'));
             letters[index].classList.add('highlight');
-
             index = (index + 1) % letters.length;
+            setTimeout(highlightNext, 200);
+        };
 
-            setTimeout(highlightNextLetter, 200);
-        }
+        highlightNext();
+    };
 
-        highlightNextLetter();
-    }
-
-    animateLetterHighlight();
+    animateLoadingLetters();
 
     setTimeout(() => {
-        document.querySelector('html').classList.remove('overflow-hidden')
-        loadingScreen.classList.add('opacity-0')
+        document.documentElement.classList.remove('overflow-hidden');
+        loadingScreen.classList.add('opacity-0');
+
         setTimeout(() => {
-            loadingScreen.remove()
+            loadingScreen.remove();
             ScrollLocker.unlock();
         }, 500);
     }, 3000);
 
-    const sheetId = 'https://script.google.com/macros/s/AKfycbxDo9cNzKpvNNJLgnwOehf0SvXuxG7MS-zjC-01_BycEEm9HSpbatAGYhg2_Z4qowSk/exec'
+    fetch(sheetUrl)
+        .then((res) => res.json())
+        .then((data) => {
+            const {
+                vtuberName,
+                vtuberHeight,
+                vtuberBirth,
+                vtuberDebutDate,
+                vtuberHobby,
+                vtuberAbout,
+                schedule
+            } = data;
 
-    fetch(sheetId)
-        .then(r => r.json())
-        .then(d => {
-            const values = d
-            values.map((item, i) => {
-                const el = `<div data-aos="fade-up" data-aos-delay="500" data-aos-duration="500"
-                    data-aos-easing="ease-in-out" class="bg-blue/55 py-1 rounded-lg">
-                    <div id="stream-box"
-                        class="bg-blue/60 shadow-inner shadow-black/30 w-full sm:w-96 md:w-[30rem] flex justify-between items-center rounded-lg font-cute text-[0.50rem] sm:text-xs md:text-xs text-white uppercase py-2 px-2 text-center">
-                        <span class="block" id="day">${item.hari}</span>
-                        <span class="block" id="activity">${item.kegiatan}</span>
-                        <span class="block" id="time">${item.waktu}</span>
-                    </div>
-                </div>`
+            $('#vtuber-name').textContent = vtuberName;
+            $('#vtuber-height').textContent = vtuberHeight;
+            $('#vtuber-birth').textContent = vtuberBirth;
+            $('#vtuber-debut').textContent = vtuberDebutDate;
+            $('#vtuber-hobby').textContent = vtuberHobby;
+            $('#vtuber-about').textContent = vtuberAbout;
 
-                scheduleContainer.innerHTML += el
-            })
-        })
+            schedule.forEach((item) => {
+                const el = document.createElement('div');
+                el.setAttribute('data-aos', 'fade-up');
+                el.setAttribute('data-aos-delay', '500');
+                el.setAttribute('data-aos-duration', '500');
+                el.setAttribute('data-aos-easing', 'ease-in-out');
+                el.className = 'bg-blue/55 py-1 rounded-lg';
 
-    downloadScheduleButton.addEventListener('dblclick', () => {
-        htmlToImage.toPng(scheduleImage)
-            .then(function (dataUrl) {
+                el.innerHTML = `
+          <div class="bg-blue/60 shadow-inner shadow-black/30 w-full sm:w-96 md:w-[30rem] flex justify-between items-center rounded-lg font-cute text-[0.50rem] sm:text-xs md:text-xs text-white uppercase py-2 px-2 text-center">
+            <span>${item.hari}</span>
+            <span>${item.kegiatan}</span>
+            <span>${item.waktu}</span>
+          </div>
+        `;
+
+                scheduleContainer.appendChild(el);
+            });
+        });
+
+    downloadButton.addEventListener('dblclick', () => {
+        htmlToImage
+            .toPng(scheduleImage)
+            .then((dataUrl) => {
                 const link = document.createElement('a');
                 link.download = 'schedule.png';
                 link.href = dataUrl;
                 link.click();
             })
-            .catch(function (error) {
-                console.error('oops, something went wrong!', error);
-            });
+            .catch((err) => console.error('Failed to download image:', err));
     });
-
-
 });
